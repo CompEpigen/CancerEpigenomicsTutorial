@@ -50,27 +50,8 @@ meth <- methrix::remove_uncovered(m = meth)
 save_HDF5_methrix(meth, dir=file.path(BASE_DIR, "methrix_objects", "methrix_filtered_06_05_2021"))
 
 
-# 1.1: QC report
+# 1.4: QC report on coverage filtered data 
 methrix::methrix_report(meth = meth, recal_stats=TRUE, output_dir = file.path(OUT_DIR, "methrix_report_filtered"))
-
-
-# 1.4: SNP filtering
-# not implemented yet, TODO
-#
-# -- Bioconductor dbSNP packages can be used to remove SNPs
-# -- too many SNPs might get removed
-# -- Rajbir suggested two sequential fitlering steps
-# ---- first fitler the common ones
-# ---- filter out the the rare SNPs with high SD
-# -- MAF threshold 0.01
-#
-
-# 1.5: remove low quality samples
-# -- idea: steal greedycut from RnBeads
-
-
-# 1.6 export all the data
-write_bedgraphs_old(meth, output_dir = file.path(OUT_DIR, "tracks", "bw"), make_BigWig=TRUE)
 
 
 ##
