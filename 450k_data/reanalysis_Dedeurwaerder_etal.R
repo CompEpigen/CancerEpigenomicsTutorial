@@ -2,13 +2,19 @@
 library(RnBeads)
 
 DATA_DIR<-"~/data"
-SAMPLE_SHEET_FILE<-"~Sample_sheet_complete_clean.csv"
-OUT_DIR<-"~/rnbeads_analysis/"
+#SAMPLE_SHEET_FILE<-"/ngs_share/scratch/rnbeads_tutorial/Sample_sheet_complete_clean.csv"
+OUT_DIR<-"/ngs_share/scratch/rnbeads_tutorial/analysis"
+dir.create(OUT_DIR)
 #GEO_ACCESSION<-"GSE29290"
 #GEO_URL<-"https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE29290"
+
 ###### load data from GEO
 
-rnb.set<-rnb.read.geo("GSE29290")
+rnb.options(disk.dump.big.matrices = FALSE)
+##rnb.set<-rnb.read.geo("GSE29290")
+
+## or if the connection does not work
+rnb.set<-rnb.read.geo("/ngs_share/scratch/rnbeads_tutorial/GSE29290_series_matrix.txt.gz")
 
 ## leave out non-HCT116 samples
 non_hct116<-which(!pheno(rnb.set)[["source_name_ch1"]] %in% "Colon")
@@ -30,7 +36,7 @@ pheno(rnb.set)
 
 ####### full analysis
 #options(fftempdir="/mnt/data-ssd/tmp/")
-options(fftempdir="/tmp/")
+#options(fftempdir="/ngs_share/tmp/")
 
 
 rnb.options(analysis.name = "Re-analysis of HCT116 450k data from Dedeurwaerder et al.")
@@ -105,8 +111,8 @@ rnb.options(filtering.coverage.threshold = 3)
 #rnb.options(exploratory.correlation.permutations = 10000)
 #rnb.options(exploratory.correlation.qc = TRUE)
 #rnb.options(exploratory.beta.distribution = TRUE)
-#rnb.options(exploratory.intersample = TRUE)
-#rnb.options(exploratory.deviation.plots = NULL)
+rnb.options(exploratory.intersample = FALSE)
+rnb.options(exploratory.deviation.plots = FALSE)
 #rnb.options(exploratory.clustering = "all")
 #rnb.options(exploratory.clustering.top.sites = 1000)
 #rnb.options(exploratory.region.profiles = c("genes","promoters","cpgislands"))
