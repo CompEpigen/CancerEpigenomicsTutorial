@@ -27,12 +27,11 @@ meth <- methrix::read_bedgraphs(files = bdg_files, ref_cpgs = hg19_cpgs, coldata
         stranded = FALSE, h5=TRUE, 
         h5_dir=file.path(BASE_DIR, "methrix_hdfs/"))
 
-#colnames(meth)<-rownames(sample_info)
-#meth@colData<-DataFrame(sample_info)
 
-
+####################################################################################################################################################
 ## Step 1: QC and filtering
-##
+####################################################################################################################################################
+
 
 #meth<-load_HDF5_methrix(file.path(OUT_DIR, "methrix_objects", "methrix_15_08_19"))
 
@@ -54,9 +53,10 @@ save_HDF5_methrix(meth, dir=file.path(BASE_DIR, "methrix_objects", "methrix_filt
 methrix::methrix_report(meth = meth, recal_stats=TRUE, output_dir = file.path(OUT_DIR, "methrix_report_filtered"))
 
 
-##
+####################################################################################################################################################
 ## Step 2: Exploratory analysis
-##
+####################################################################################################################################################
+
 
 # 2.1 Global summaries
 ### extract interesting regions from Annotatr built-in annotation tables
@@ -111,7 +111,10 @@ pdf(file.path(PLOT_DIR, "violins_by_region.pdf"), width=12, height=6)
 print(p)
 dev.off()
 
-#### Step 3. Differential methylation analysis
+####################################################################################################################################################
+## Step 3. Differential methylation analysis
+####################################################################################################################################################
+                     
 ##Try to find any interesting differences
 
 sum_df$Delta<-sum_df$HCT116_DKO-sum_df$HCT116_WT
