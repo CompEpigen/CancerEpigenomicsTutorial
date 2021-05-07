@@ -99,7 +99,7 @@ PLOT_DIR<-file.path(BASE_DIR, "plots")
 
 sum_df<-readRDS(file=file.path(OUT_DIR, "ont_region_summaries.RDS"))
 ### or on the Orchestra machine
-download.file("ftp://ftp.dkfz-heidelberg.de/outgoing/ont_region_summaries_b370/ont_region_summaries.RDS", "~/ont_region_summaries.RDS")
+download.file("ftp://ftp.dkfz-heidelberg.de/outgoing/ont_region_summaries_b370/ont_region_summaries.RDS", "~/ont_region_summaries_updated.RDS")
 sum_df<-readRDS("~/ont_region_summaries.RDS")
 
 
