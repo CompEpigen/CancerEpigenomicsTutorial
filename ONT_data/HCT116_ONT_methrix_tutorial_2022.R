@@ -195,6 +195,25 @@ dev.off()
 ### explore the regions using IGV and GREAT (http://great.stanford.edu/public/html/)
 
 head(dmrs[["genes_promoters"]][["hypo"]])
+                     
+##################################################################
+### Step 4: Checking individual loci 
+##################################################################
+                     
+lig4_gr<-GRanges("chr13", IRanges(108859792,108867882),"*")
+lig4_gr<-GRanges("chr13", IRanges(108859792-10000,108867882+10000),"*")
+meth_lig4<-subset_methrix(meth, regions=lig4_gr)
+h33_gr<-GRanges("chr1", IRanges(226250408-10000,226259703+10000),"*")
+meth_h33<-subset_methrix(meth, regions=h33_gr)
+meth_h33_df<-methrix::get_matrix(meth_h33, type="M")
+meth_h33_df_filt<-meth_h33_df[rowSums(is.na(meth_h33_df))<1,]
+coords_h33<-as.data.frame(meth_h33@elementMetadata)
+coords_h33_filt<-coords_h33[rowSums(is.na(meth_h33_df))<1,]
+h33_df<-cbind(coords_h33_filt, meth_h33_df_filt)
 
+plot(df$start, df$HCT116_WT)
+plot(h33_df$start, h33_df$HCT116_WT)
+plot(h33_df$start, h33_df$HCT116_DKO)
+lines(h33_df$start, h33_df$HCT116_DKO)
 
 ### END
