@@ -16,6 +16,10 @@ library(annotatr)
 library(methrix)
 
 
+### Methylation calls
+### https://hub.dkfz.de/s/3bEFtPqjFyStHaN
+
+
 BASE_DIR<-"~/Documents/teaching/DKFZ/MajorCanBiol/B370_practical/2022/"
 
 DATA_DIR<-file.path(BASE_DIR, "data", "methylation")
