@@ -195,6 +195,8 @@ dev.off()
 ### explore the regions using IGV and GREAT (http://great.stanford.edu/public/html/)
 
 head(dmrs[["genes_promoters"]][["hypo"]])
+## "clean" printing of data frames for convenience when working with GREAT
+print.data.frame(dmrs[["genes_promoters"]][["hyper"]][,c(1:3)], row.names=FALSE)
                      
 ##################################################################
 ### Step 4: Checking individual loci 
@@ -216,4 +218,12 @@ plot(h33_df$start, h33_df$HCT116_WT)
 plot(h33_df$start, h33_df$HCT116_DKO)
 lines(h33_df$start, h33_df$HCT116_DKO)
 
+                     
+################################################################
+# Homework
+###############################################################
+# 1. Go through the script and understand it (perhaps try some other methrix functions from the vignette)
+# 2. Pick a gene of interest and visualize methylation values around it
+# 3. Perform and enrichment analysis for a deliberate group of DMRs using GREAT 
+                     
 ### END
