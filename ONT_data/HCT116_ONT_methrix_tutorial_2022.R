@@ -213,7 +213,7 @@ coords_h33<-as.data.frame(meth_h33@elementMetadata)
 coords_h33_filt<-coords_h33[rowSums(is.na(meth_h33_df))<1,]
 h33_df<-cbind(coords_h33_filt, meth_h33_df_filt)
 
-plot(df$start, df$HCT116_WT)
+plot(h33_df$start, df$HCT116_WT)
 plot(h33_df$start, h33_df$HCT116_WT)
 plot(h33_df$start, h33_df$HCT116_DKO)
 lines(h33_df$start, h33_df$HCT116_DKO)
